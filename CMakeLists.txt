@@ -14,6 +14,8 @@ add_executable(${PROJECT_NAME} src/main.cpp
         src/vertexArray.h
         src/vertexArray.cpp
         src/vertexBufferLayout.h
+        src/shader.h
+        src/shader.cpp
         )
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
