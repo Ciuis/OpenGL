@@ -5,10 +5,7 @@
 #include <sstream>
 
 #include "renderer.h"
-#include "vertexBuffer.h"
-#include "indexBuffer.h"
-#include "vertexArray.h"
-#include "shader.h"
+
 
 int main() {
 
@@ -80,6 +77,8 @@ int main() {
         ib.Unbind();
         shader.Unbind();
 
+        Renderer renderer;
+
         float r = 0.0f;
         float increment = 0.05f;
 
@@ -87,15 +86,12 @@ int main() {
         while (!glfwWindowShouldClose(window)) {
 
             /* rendering starts here */
-            GLCall(glClear(GL_COLOR_BUFFER_BIT));
+            renderer.Clear();
 
-            GLCall(shader.Bind());
-            GLCall(shader.SetUniform4f("u_Color", r, 0.3f, 0.8f, 1.0f))
+            shader.Bind();
+            shader.SetUniform4f("u_Color", r, 0.3f, 0.8f, 1.0f);
 
-            va.Bind();
-            ib.Bind();
-
-            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+            renderer.Draw(va, ib, shader);
 
             if (r > 1.0f) {
                 increment = -0.05f;

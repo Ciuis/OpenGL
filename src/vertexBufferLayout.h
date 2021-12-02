@@ -1,9 +1,8 @@
 #pragma once
 
-#include "renderer.h"
-
+#include <GL/glew.h>
 #include <vector>
-#include <GL/gl.h>
+#include "debug.h"
 
 struct VertexBufferElement {
     unsigned int type;
@@ -16,7 +15,7 @@ struct VertexBufferElement {
             case GL_UNSIGNED_INT:   return 4;
             case GL_UNSIGNED_BYTE:  return 1;
         }
-        ASSERT(false);
+        assert(false);
         return 0;
     }
 };
@@ -32,7 +31,7 @@ public:
 
     template <typename T>
     void Push(unsigned int count) {
-        ASSERT(false);
+        assert(false);
     }
 
     inline const std::vector<VertexBufferElement> GetElements() const { return m_Elements; }
